@@ -1,0 +1,12 @@
+/* Adım 2’de detaylı tasarım yapacağız; şimdilik minik düzen. */
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.post-list { list-style:none; padding:0; display:grid; gap:8px; }
+.post-item { padding:8px; border:1px solid #ddd; border-radius:8px; display:flex; align-items:center; justify-content:space-between; }
+.row-actions { display:inline-flex; gap:8px; align-items:center; }
+.flash { list-style:none; padding:0; margin:12px 0; }
+.flash li { padding:8px; border-radius:6px; margin-bottom:6px; }
+.flash .success { background:#e9f9ee; border:1px solid #b7e3c2; }
+.flash .error { background:#fde8e8; border:1px solid #f5b5b5; }
+.post-form label { display:block; margin-bottom:12px; }
+.post-form input[type="text"], .post-form textarea { width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; }

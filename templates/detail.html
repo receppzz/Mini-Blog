@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <article>
+    <h1>{{ post.title }}</h1>
+    <p class="meta">
+      Oluşturuldu: {{ post.created_at.strftime("%d.%m.%Y %H:%M") }}
+      {% if post.updated_at and post.updated_at > post.created_at %}
+        • Güncellendi: {{ post.updated_at.strftime("%d.%m.%Y %H:%M") }}
+      {% endif %}
+    </p>
+    <div class="content">
+      {{ post.content | replace('\n', '<br>') | safe }}
+    </div>
+    <div class="row-actions">
+      <a href="{{ url_for('edit', post_id=post.id) }}">Düzenle</a>
+      <form action="{{ url_for('delete', post_id=post.id) }}" method="post" style="display:inline" onsubmit="return confirm('Silinsin mi?');">
+        <button type="submit">Sil</button>
+      </form>
+    </div>
+  </article>
+{% endblock %}

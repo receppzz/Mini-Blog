@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Yazılar</h1>
+
+  {% if posts %}
+    <ul class="post-list">
+      {% for p in posts %}
+        <li class="post-item">
+          <a href="{{ url_for('detail', post_id=p.id) }}">{{ p.title }}</a>
+          <small>{{ p.created_at.strftime("%d.%m.%Y %H:%M") }}</small>
+          <div class="row-actions">
+            <a href="{{ url_for('edit', post_id=p.id) }}">Düzenle</a>
+            <form action="{{ url_for('delete', post_id=p.id) }}" method="post" style="display:inline" onsubmit="return confirm('Silmek istediğine emin misin?');">
+              <button type="submit">Sil</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Henüz yazı yok. <a href="{{ url_for('create') }}">İlk yazını oluştur</a>.</p>
+  {% endif %}
+{% endblock %}

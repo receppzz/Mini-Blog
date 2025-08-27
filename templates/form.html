@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ 'Yeni Yazı' if mode == 'create' else 'Yazıyı Düzenle' }}</h1>
+  <form method="post" class="post-form">
+    <label>Başlık
+      <input type="text" name="title" value="{{ post.title or '' }}" required>
+    </label>
+
+    <label>İçerik
+      <textarea name="content" rows="8" required>{{ post.content or '' }}</textarea>
+    </label>
+
+    <div class="row-actions">
+      <button type="submit">{{ 'Oluştur' if mode == 'create' else 'Kaydet' }}</button>
+      <a href="{{ url_for('home') }}">İptal</a>
+    </div>
+  </form>
+{% endblock %}
